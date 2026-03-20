@@ -1,0 +1,170 @@
+.moviePage {
+  padding: 20px 0;
+}
+
+.movieDetail {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  background: #2d2d2d;
+  border-radius: 8px;
+  padding: 30px;
+  border: 1px solid #404040;
+}
+
+.moviePoster {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.movieHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.movieHeader h1 {
+  color: #e0e0e0;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+}
+
+.alternativeName {
+  color: #b0b0b0;
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.movieMeta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: #b0b0b0;
+  font-size: 0.95rem;
+}
+
+.movieRatings {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 15px 0;
+  border-top: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+}
+
+.ratingItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ratingLabel {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.ratingValue {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff6b6b;
+}
+
+.movieDescription {
+  margin-bottom: 30px;
+}
+
+.movieDescription h3 {
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.movieDescription p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.movieDetails {
+  margin-top: 20px;
+}
+
+.detailItem {
+  margin-bottom: 10px;
+  color: #b0b0b0;
+}
+
+.detailItem strong {
+  color: #e0e0e0;
+  margin-right: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: #666;
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #404040;
+  border-top-color: #ff6b6b;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorMessage {
+  background: #ff6b6b20;
+  color: #ff6b6b;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ff6b6b;
+  margin: 20px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .movieDetail {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .moviePoster {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .movieHeader h1 {
+    font-size: 1.5rem;
+  }
+}
