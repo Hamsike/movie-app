@@ -1,0 +1,101 @@
+.favoritesPage {
+  padding: 20px 0;
+}
+
+.favoritesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.favoritesHeader h1 {
+  color: #e0e0e0;
+  font-size: 2rem;
+  border-bottom: 2px solid #404040;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.favoritesEmpty {
+  text-align: center;
+  padding: 60px 20px;
+  background: #2d2d2d;
+  border-radius: 8px;
+  border: 1px solid #404040;
+}
+
+.favoritesEmpty h2 {
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.favoritesEmpty p {
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.favoritesStats {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  background: #2d2d2d;
+  border-radius: 4px;
+  color: #b0b0b0;
+  border: 1px solid #404040;
+}
+
+.moviesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #ff5252;
+}
+
+.buttonOutline {
+  background: transparent;
+  border: 1px solid #404040;
+  color: #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.buttonOutline:hover {
+  background: #404040;
+}
+
+@media (max-width: 768px) {
+  .favoritesHeader {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .favoritesHeader h1 {
+    font-size: 1.5rem;
+  }
+  
+  .moviesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+}

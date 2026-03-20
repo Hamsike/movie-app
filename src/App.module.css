@@ -1,0 +1,72 @@
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  background: #2d2d2d;
+  padding: 1rem 0;
+  border-bottom: 1px solid #404040;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.logo:hover {
+  color: #ff8585;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navLink {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.navLink:hover {
+  background: #404040;
+  color: #ff6b6b;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .nav {
+    gap: 10px;
+  }
+  
+  .main {
+    padding: 15px;
+  }
+}

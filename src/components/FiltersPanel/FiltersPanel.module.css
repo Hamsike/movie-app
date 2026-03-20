@@ -1,0 +1,143 @@
+.filtersPanel {
+  background: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #e0e0e0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+}
+
+.select,
+.input {
+  padding: 8px 12px;
+  background: #3d3d3d;
+  color: #e0e0e0;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.select:focus,
+.input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #ff5252;
+}
+
+.buttonOutline {
+  background: transparent;
+  border: 1px solid #404040;
+  color: #e0e0e0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.buttonOutline:hover {
+  background: #404040;
+}
+
+.activeFilters {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #404040;
+}
+
+.activeTitle {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.filterTags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filterTag {
+  background: #404040;
+  color: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.removeTag {
+  background: none;
+  border: none;
+  color: #b0b0b0;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 2px;
+  transition: color 0.3s;
+}
+
+.removeTag:hover {
+  color: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .filtersGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .button,
+  .buttonOutline {
+    width: 100%;
+  }
+}
