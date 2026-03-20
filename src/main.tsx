@@ -26,7 +26,7 @@ createRoot(document.getElementById('root')!).render(
       <PersistGate loading={null} persistor={persistor}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <App/>
+            <App />
           </BrowserRouter>
         </QueryClientProvider>
       </PersistGate>
