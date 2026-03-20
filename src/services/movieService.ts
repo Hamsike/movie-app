@@ -9,6 +9,29 @@ const api = axios.create({
   },
 });
 
+api.interceptors.response.use(
+    response => response,
+    error => {
+        if (!error.response) {
+            console.error('Network error:', error.message);
+            return Promise.reject(new Error('Проблема с сетью. Проверьте подключение к интернету'));
+        }
+
+        const { status, data } = error.response;
+
+        if (status === 403) {
+            const message = data?.message || 'Лимит исчерпан';
+            return Promise.reject(new Error(message))
+        }
+
+        if (status === 401) {
+            const message = data?.message || 'Доступ запрещён';
+            return Promise.reject(new Error(message))
+        }
+        return Promise.reject(error)
+    }
+)
+
 export const movieService = {
   getMovies: async (page = 1, filters?: Filters): Promise<MoviesResponse> => {
     const params: any = {

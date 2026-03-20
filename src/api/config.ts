@@ -1,6 +1,5 @@
 export const API_CONFIG = {
     baseURL: '/api',
-
     defaultParams: {
     limit: 50,
     selectFields: [
@@ -16,5 +15,4 @@ export const API_CONFIG = {
     sortField: 'votes.kp',
     sortType: -1
   }
-
 }
