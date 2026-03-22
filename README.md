@@ -61,10 +61,17 @@ npm install
 
 ### 2. Настройте переменные окружения
 
-Скопируйте файл `.env.default` в `.env`:
+Создайте файл `.env` на основе `.env.default`:
 
 ```bash
+# macOS / Linux
 cp .env.default .env
+
+# Windows (Command Prompt)
+copy .env.default .env
+
+# Windows (PowerShell)
+Copy-Item .env.default .env
 ```
 Откройте файл `.env` и при необходимости замените API ключ:
 ```bash
