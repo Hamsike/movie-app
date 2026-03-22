@@ -1,6 +1,11 @@
 export const API_CONFIG = {
-  baseURL: '/api',
-  apiKey: import.meta.env.VITE_API_KEY,
+  // Для GitHub Pages используем прокси через CORS-anywhere или другой сервис
+  baseURL: import.meta.env.PROD 
+    ? 'https://api.kinopoisk.dev'
+    : '/api',
+  
+  apiKey: import.meta.env.VITE_API_KEY || '',
+  
   defaultParams: {
     limit: 50,
     selectFields: [
@@ -16,4 +21,4 @@ export const API_CONFIG = {
     sortField: 'votes.kp',
     sortType: -1
   }
-};
+}

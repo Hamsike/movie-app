@@ -1,9 +1,16 @@
 import { useInfiniteQuery, useQuery, useQueryClient } from '@tanstack/react-query';
 import { movieService } from '../services/movieService';
 import type { Filters } from '../types';
+import { getMockMoviesPage } from '../mockData';
+
+const isGitHubPages = () => {
+  return import.meta.env.PROD && window.location.hostname.includes('github.io');
+};
+
 
 export const useMovies = (filters?: Filters) => {
   const queryClient = useQueryClient();
+  const useMock = isGitHubPages();
 
   const {
     data,
@@ -16,7 +23,12 @@ export const useMovies = (filters?: Filters) => {
     refetch,
   } = useInfiniteQuery({
     queryKey: ['movies', filters],
-    queryFn: ({ pageParam = 1 }) => movieService.getMovies(pageParam, filters),
+    queryFn: ({ pageParam = 1 }) => {
+      if (useMock) {
+        return getMockMoviesPage(pageParam);
+      }
+      return movieService.getMovies(pageParam, filters)
+    },
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.pages) {
         return lastPage.page + 1;

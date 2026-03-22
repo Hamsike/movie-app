@@ -2,12 +2,22 @@ import axios from 'axios';
 import { API_CONFIG } from '../api/config';
 import type { MoviesResponse, Filters } from '../types';
 
+const isGitHubPages = () => {
+  return import.meta.env.PROD && window.location.hostname.includes('github.io');
+};
+
 const api = axios.create({
   baseURL: API_CONFIG.baseURL,
   headers: {
     'Content-Type': 'application/json',
-    'X-API-KEY': API_CONFIG.apiKey
   },
+});
+
+api.interceptors.request.use(config => {
+  if (API_CONFIG.apiKey && !isGitHubPages()) {
+    config.headers['X-API-KEY'] = String(API_CONFIG.apiKey);
+  }
+  return config;
 });
 
 api.interceptors.response.use(

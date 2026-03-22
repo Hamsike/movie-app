@@ -7,7 +7,7 @@ export const NotFound: React.FC = () => {
       <p style={{ color: '#b0b0b0', marginBottom: '20px' }}>
         Страница не найдена
       </p>
-      <Link to="/" style={{ color: '#ff6b6b', textDecoration: 'none' }}>
+      <Link to="/movie-app" style={{ color: '#ff6b6b', textDecoration: 'none' }}>
         Вернуться на главную
       </Link>
     </div>

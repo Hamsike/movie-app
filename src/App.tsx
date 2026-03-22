@@ -32,7 +32,7 @@ function App() {
           }}
         >
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/movie-app" element={<HomePage />} />
             <Route path="/movie/:id" element={<MoviePage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="*" element={<NotFound />} />

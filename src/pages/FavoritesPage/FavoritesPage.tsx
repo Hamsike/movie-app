@@ -15,7 +15,7 @@ export const FavoritesPage: React.FC = () => {
         <div className={styles.favoritesEmpty}>
           <h2>★ Избранное пусто</h2>
           <p>Добавляйте фильмы в избранное, и они появятся здесь</p>
-          <Link to="/" className={styles.button}>Перейти к фильмам</Link>
+          <Link to="/movie-app" className={styles.button}>Перейти к фильмам</Link>
         </div>
       </div>
     );

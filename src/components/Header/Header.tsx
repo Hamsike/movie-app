@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
     return (
         <header className={styles.header}>
             <div className={styles.headerContent}>
-                <Link to="/" className={styles.logo}>
+                <Link to="/movie-app" className={styles.logo}>
                     🎬 MovieApp
                 </Link>
 
