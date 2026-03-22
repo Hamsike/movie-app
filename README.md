@@ -2,12 +2,12 @@
 
 Приложение для просмотра, поиска и сравнения фильмов с использованием API Кинопоиска.
 
-![React]
-![TypeScript]
-![Redux Toolkit]
-![React Query]
-![Vite]
-![License]
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-1.9-purple)
+![React Query](https://img.shields.io/badge/React_Query-5.12-orange)
+![Vite](https://img.shields.io/badge/Vite-5.0-yellow)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ## 🌐 Live Demo
 
