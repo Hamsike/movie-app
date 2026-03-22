@@ -26,27 +26,57 @@
 .movieHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .movieHeader h1 {
   color: #e0e0e0;
   font-size: 2rem;
   margin: 0;
+  flex: 1;
 }
 
-.favoriteButton {
-  background: none;
-  border: none;
-  color: #ff6b6b;
-  font-size: 2rem;
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.favoriteButton,
+.compareButton {
+  background: #404040;
+  border: 1px solid #505050;
+  color: #e0e0e0;
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.favoriteButton:hover {
-  transform: scale(1.1);
+.favoriteButton:hover,
+.compareButton:hover {
+  background: #505050;
+  transform: scale(1.05);
+}
+
+.favoriteButton.active {
+  background: #ff6b6b;
+  color: white;
+  border-color: #ff6b6b;
+}
+
+.compareButton.active {
+  background: #4ecdc4;
+  color: white;
+  border-color: #4ecdc4;
 }
 
 .alternativeName {
@@ -166,5 +196,16 @@
   
   .movieHeader h1 {
     font-size: 1.5rem;
+  }
+  
+  .actionButtons {
+    gap: 8px;
+  }
+  
+  .favoriteButton,
+  .compareButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
   }
 }
