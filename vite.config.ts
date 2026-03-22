@@ -8,10 +8,7 @@ export default defineConfig({
       '/api': {
         target: 'https://api.poiskkino.dev',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/v1.4'),
-        headers: {
-          'X-API-KEY': 'Q056TDQ-1X24APY-QVJ576P-FY195X1'
-        }
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   }

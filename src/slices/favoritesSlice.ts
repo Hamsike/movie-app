@@ -20,10 +20,10 @@ const favoritesSlice = createSlice({
             }
         },
 
-        removeFromFavorites(state, action: PayloadAction<Movie>) {
-            state.items.filter(item => item.id !== action.payload.id)
+        removeFromFavorites(state, action: PayloadAction<number>) {
+            state.items = state.items.filter(item => item.id !== action.payload)
         },
-
+        
         clearFavorites: (state) => {
             state.items = [];
         },

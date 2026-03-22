@@ -5,20 +5,16 @@ interface ConfirmModalProps {
     isOpen: boolean;
     onClose: () => void;
     onConfirm: () => void;
-    title: string;
-    message: string;
-    confirmText?: string;
-    cancelText?: string;
+    titleMovie: string;
+    typeModal: boolean;
 }
 
 export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     isOpen,
     onClose,
     onConfirm,
-    title,
-    message,
-    confirmText = 'Добавить',
-    cancelText = 'Отмена',
+    titleMovie,
+    typeModal
 }) => {
     useEffect(() => {
         if (isOpen) {
@@ -40,10 +36,16 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
     const handleConfirm = () => {
         onConfirm();
-        onClose();
+        onClose()
     };
 
     if (!isOpen) return null;
+    const isRemove = typeModal;
+    const title = isRemove ? 'Удаление из избранного' : 'Добавление в избранное';
+    const message = isRemove 
+        ? `Вы действительно хотите удалить фильм: ${titleMovie}?` 
+        : `Вы действительно хотите добавить фильм: ${titleMovie}?`;
+    const buttonText = isRemove ? 'Удалить' : 'Добавить';
 
     return (
         <div className={styles.overlay} onClick={handleBackdropClick}>
@@ -61,10 +63,10 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
                 <div className={styles.footer}>
                     <button className={styles.cancelButton} onClick={onClose}>
-                        {cancelText}
+                        Отмена
                     </button>
                     <button className={styles.confirmButton} onClick={handleConfirm}>
-                        {confirmText}
+                        {buttonText}
                     </button>
                 </div>
             </div>

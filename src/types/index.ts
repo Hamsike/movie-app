@@ -1,26 +1,26 @@
 export interface Movie {
-    id: number;
+  id: number;
+  name: string;
+  alternativeName?: string;
+  year?: number;
+  description?: string;
+  shortDescription?: string;
+  rating?: {
+    kp?: number;
+    imdb?: number;
+  };
+  poster?: {
+    url?: string;
+    previewUrl?: string;
+  };
+  genres?: Array<{
     name: string;
-    alternativeName?: string;
-    year: number;
-    description?: string;
-    shortDescription?: string;
-    rating: {
-        kp: number;
-        imdb: number;
-    };
-    poster?: {
-        url: string;
-        previewUrl: string;
-    };
-    genres: Array<{
-        name: string;
-    }>;
-    countries: Array<{
-        name: string;
-    }>;
-    movieLength?: number;
-    ageRating?: number;
+  }>;
+  countries?: Array<{
+    name: string;
+  }>;
+  movieLength?: number;
+  ageRating?: number;
 }
 
 export interface MoviesResponse {

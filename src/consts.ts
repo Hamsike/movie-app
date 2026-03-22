@@ -1,0 +1,1 @@
+export const FALLBACK_IMAGE = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23404040"%3E%3Cpath d="M18 3v2h-2V3H8v2H6V3H4v18h16V3h-2zM8 5h2v2H8V5zm8 0v2h-2V5h2zm4 14H4V9h16v10zM6 11h2v2H6v-2zm4 0h8v2h-8v-2zM6 15h2v2H6v-2zm4 0h8v2h-8v-2z"/%3E%3C/svg%3E';

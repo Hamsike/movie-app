@@ -4,6 +4,7 @@ import type { Movie } from '../../types';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { addToFavorites, removeFromFavorites } from '../../slices/favoritesSlice';
 import { ConfirmModal } from '../ConfirmModal/ConfirmModal';
+import { FALLBACK_IMAGE } from '../../consts';
 import styles from './MovieCard.module.css';
 
 interface MovieCardProps {
@@ -11,59 +12,59 @@ interface MovieCardProps {
     showFavoriteButton?: boolean;
 }
 
+
 export const MovieCard: React.FC<MovieCardProps> = ({ movie, showFavoriteButton = true }) => {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [imgError, setImgError] = useState(false);
     const dispatch = useAppDispatch();
     const favorites = useAppSelector(state => state.favorites.items);
-    const isFavorite = favorites.some(m => m.id === movie.id);
+    const isFavorite = favorites.some(item => item.id === movie.id);
 
-    const handleAddToFavorites = () => {
-        setShowConfirmModal(true);
+    const kpRating = movie.rating?.kp ?? 0;
+    const imdbRating = movie.rating?.imdb ?? 0;
+    const posterUrl = movie.poster?.previewUrl || movie.poster?.url;
+    const imageSrc = !imgError && posterUrl ? posterUrl : FALLBACK_IMAGE;
+
+    const handleImageError = () => {
+        setImgError(true);
     };
 
-    const handleConfirmAdd = () => {
-        dispatch(addToFavorites(movie));
-    };
-
-    const handleRemoveFromFavorites = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dispatch(removeFromFavorites(movie));
-    };
-
-    const handleFavoriteClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isFavorite) {
-            handleRemoveFromFavorites(e);
-        } else {
-            handleAddToFavorites();
+    const handleToggleFavorite = () => {
+        if (!isFavorite) {
+            dispatch(addToFavorites(movie))
         }
-    };
+        else {
+            dispatch(removeFromFavorites(movie.id))
+        }
+    }
 
     return (
         <>
             <div className={styles.movieCard}>
                 <Link to={`/movie/${movie.id}`}>
                     <img
-                        src={movie.poster?.previewUrl || '/placeholder.jpg'}
+                        src={imageSrc}
                         alt={movie.name}
                         className={styles.moviePoster}
+                        onError={handleImageError}
                     />
                 </Link>
                 <div className={styles.movieInfo}>
                     <Link to={`/movie/${movie.id}`} className={styles.movieTitle}>
-                        {movie.name}
+                        {movie.name || movie.alternativeName || 'Без названия'}
                     </Link>
-                    <div className={styles.movieYear}>{movie.year}</div>
+                    <div className={styles.movieYear}>{movie.year || '—'}</div>
                     <div className={styles.movieRating}>
-                        <span className={styles.ratingKp}>KP: {movie.rating.kp?.toFixed(1)}</span>
-                        <span className={styles.ratingImdb}>IMDB: {movie.rating.imdb?.toFixed(1)}</span>
+                        <span className={styles.ratingKp}>
+                            KP: {kpRating > 0 ? kpRating.toFixed(1) : '—'}
+                        </span>
+                        <span className={styles.ratingImdb}>
+                            IMDB: {imdbRating > 0 ? imdbRating.toFixed(1) : '—'}
+                        </span>
                     </div>
                     {showFavoriteButton && (
                         <button
-                            onClick={handleFavoriteClick}
+                            onClick={() => setShowConfirmModal(true)}
                             className={`${styles.favoriteButton} ${isFavorite ? styles.active : ''}`}
                         >
                             {isFavorite ? '★' : '☆'}
@@ -75,11 +76,9 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, showFavoriteButton 
             <ConfirmModal
                 isOpen={showConfirmModal}
                 onClose={() => setShowConfirmModal(false)}
-                onConfirm={handleConfirmAdd}
-                title="Добавление в избранное"
-                message={`Вы действительно хотите добавить фильм "${movie.name}" в избранное?`}
-                confirmText="Добавить"
-                cancelText="Отмена"
+                onConfirm={() => handleToggleFavorite()}
+                titleMovie={`${movie.name || movie.alternativeName}`}
+                typeModal={isFavorite}
             />
         </>
     );
